@@ -10,5 +10,5 @@ grant connect on database agri_connect_db to agri_connect_db_manager;
 grant create, usage on schema public to agri_connect_db_manager;
 alter default privileges in schema public
       grant select, update, insert, delete on tables to agri_connect_db_manager;
-alter default privilages in schema public
+alter default privileges in schema public
       grant usage, select, update on sequences to agri_connect_db_manager;
