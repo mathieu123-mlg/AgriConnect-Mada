@@ -30,11 +30,3 @@ CREATE TABLE reservation
     created_at            TIMESTAMP   DEFAULT CURRENT_TIMESTAMP,
     updated_at            TIMESTAMP   DEFAULT CURRENT_TIMESTAMP
 );
-
-CREATE INDEX idx_user_phone ON "user" (phone);
-CREATE INDEX idx_user_email ON "user" (email);
-CREATE INDEX idx_product_category ON product (category);
-CREATE INDEX idx_reservation_buyer ON reservation (buyer_id);
-CREATE INDEX idx_reservation_farmer ON reservation (farmer_id);
-CREATE INDEX idx_reservation_product ON reservation (product_id);
-CREATE INDEX idx_reservation_status ON reservation (status);
