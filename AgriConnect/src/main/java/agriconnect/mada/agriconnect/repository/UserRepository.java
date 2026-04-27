@@ -80,4 +80,37 @@ public class UserRepository {
 
         return u;
     }
+
+    //PUT USER BY ID
+    public Optional<User> update(Long id, User u) {
+
+        String sql = """
+        UPDATE "user"
+        SET first_name = ?,
+            last_name = ?,
+            phone = ?
+        WHERE id = ?
+        RETURNING *
+    """;
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, u.getFirstName());
+            stmt.setString(2, u.getLastName());
+            stmt.setString(3, u.getPhone());
+            stmt.setLong(4, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return Optional.of(mapUser(rs));
+            }
+
+            return Optional.empty();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating user", e);
+        }
+    }
 }

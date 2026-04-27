@@ -24,4 +24,11 @@ public class UserService {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
     }
+
+    //UPDATE USER
+    public User updateUser(Long id, User user) {
+
+        return repository.update(id, user)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+    }
 }

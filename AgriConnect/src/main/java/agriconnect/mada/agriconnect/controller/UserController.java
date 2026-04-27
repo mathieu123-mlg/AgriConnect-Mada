@@ -1,5 +1,6 @@
 package agriconnect.mada.agriconnect.controller;
 
+import agriconnect.mada.agriconnect.dto.UpdateUserRequest;
 import agriconnect.mada.agriconnect.entity.User;
 import agriconnect.mada.agriconnect.service.UserService;
 import org.springframework.http.ResponseEntity;
@@ -30,5 +31,25 @@ public class UserController {
         User user = service.getUserById(id);
 
         return ResponseEntity.ok(user);
+    }
+
+    //PUT USER BY ID
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateUser(
+            @PathVariable Long id,
+            @RequestBody UpdateUserRequest request
+    ) {
+
+        try {
+            User user = new User();
+            user.setFirstName(request.getFirstName());
+            user.setLastName(request.getLastName());
+            user.setPhone(request.getPhone());
+
+            return ResponseEntity.ok(service.updateUser(id, user));
+
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(404).body(e.getMessage());
+        }
     }
 }
