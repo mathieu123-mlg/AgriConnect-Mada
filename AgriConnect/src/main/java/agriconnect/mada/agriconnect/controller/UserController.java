@@ -2,6 +2,7 @@ package agriconnect.mada.agriconnect.controller;
 
 import agriconnect.mada.agriconnect.entity.User;
 import agriconnect.mada.agriconnect.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,18 @@ public class UserController {
         this.service = service;
     }
 
+    // GET ALL USERS
     @GetMapping
     public List<User> getAllUsers() {
         return service.getAllUsers();
+    }
+
+    // GET USER BY ID
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+
+        User user = service.getUserById(id);
+
+        return ResponseEntity.ok(user);
     }
 }

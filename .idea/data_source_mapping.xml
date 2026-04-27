@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourcePerFileMappings">
-    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/33481f67-e46a-42f6-bd58-b9588147f36b/console.sql" value="33481f67-e46a-42f6-bd58-b9588147f36b" />
     <file url="file://$PROJECT_DIR$/AgriConnect/src/main/resources/sql/db.sql" value="33481f67-e46a-42f6-bd58-b9588147f36b" />
     <file url="file://$PROJECT_DIR$/AgriConnect/src/main/resources/sql/schema.sql" value="8bf2b6a7-ec6d-4db8-a163-8b91fd3511a9" />
   </component>

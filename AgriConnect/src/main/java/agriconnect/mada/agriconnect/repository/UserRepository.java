@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserRepository {
@@ -21,6 +22,7 @@ public class UserRepository {
         return dataSource.getConnection();
     }
 
+    // FIND ALL
     public List<User> findAll() {
 
         String sql = "SELECT * FROM \"user\"";
@@ -39,6 +41,29 @@ public class UserRepository {
 
         } catch (SQLException e) {
             throw new RuntimeException("Error fetching users", e);
+        }
+    }
+
+    // FIND BY ID
+    public Optional<User> findById(Long id) {
+
+        String sql = "SELECT * FROM \"user\" WHERE id = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setLong(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return Optional.of(mapUser(rs));
+            }
+
+            return Optional.empty();
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding user by id", e);
         }
     }
 
