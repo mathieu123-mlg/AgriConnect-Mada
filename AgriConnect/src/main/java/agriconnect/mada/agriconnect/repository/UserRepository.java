@@ -113,4 +113,23 @@ public class UserRepository {
             throw new RuntimeException("Error updating user", e);
         }
     }
+
+    //DELETE USER BY ID
+    public boolean deleteById(Long id) {
+
+        String sql = "DELETE FROM \"user\" WHERE id = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setLong(1, id);
+
+            int affectedRows = stmt.executeUpdate();
+
+            return affectedRows > 0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting user", e);
+        }
+    }
 }

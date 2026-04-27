@@ -25,10 +25,20 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
     }
 
-    //UPDATE USER
+    //UPDATE USER BY ID
     public User updateUser(Long id, User user) {
 
         return repository.update(id, user)
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+    }
+
+    //DELETE USER BY ID
+    public void deleteUser(Long id) {
+
+        boolean deleted = repository.deleteById(id);
+
+        if (!deleted) {
+            throw new RuntimeException("User not found with id: " + id);
+        }
     }
 }

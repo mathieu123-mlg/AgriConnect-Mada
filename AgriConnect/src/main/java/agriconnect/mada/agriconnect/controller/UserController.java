@@ -52,4 +52,17 @@ public class UserController {
             return ResponseEntity.status(404).body(e.getMessage());
         }
     }
+
+    //DELETE USER BY ID
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+
+        try {
+            service.deleteUser(id);
+            return ResponseEntity.noContent().build(); // 204
+
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(404).body(e.getMessage());
+        }
+    }
 }
