@@ -1,111 +1,116 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap');
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+@import "tailwindcss";
+@config "../tailwind.config.ts";
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* AgriConnect Mada — Grounded Functionalism design system.
+   All colors HSL. Inspired by Malagasy laterite soil, baobab leaves & sunlight. */
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+    --background: 0 0% 100%;           /* Pure white */
+    --foreground: 142 72% 10%;         /* Very dark green-black */
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
+    --surface: 0 0% 100%;
+    --surface-alt: 142 20% 98%;        /* Very light green tint */
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+    --card: 0 0% 100%;
+    --card-foreground: 142 72% 10%;
 
-body {
-  margin: 0;
-}
+    --popover: 0 0% 100%;
+    --popover-foreground: 142 72% 10%;
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
+    --primary: 142 76% 36%;            /* Main green from logo */
+    --primary-hover: 142 76% 30%;
+    --primary-foreground: 0 0% 100%;
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+    --secondary: 142 72% 20%;          /* Dark green from logo text */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 142 76% 90%;             /* Light green accent */
+    --accent-foreground: 142 76% 36%;
+
+    --muted: 142 20% 96%;
+    --muted-foreground: 142 20% 40%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+
+    --border: 142 20% 90%;
+    --input: 142 20% 90%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.75rem;
+
+    --shadow-sm: 0 1px 2px 0 hsl(142 72% 10% / 0.05);
+    --shadow-md: 0 4px 12px -2px hsl(142 72% 10% / 0.08);
+    --shadow-lg: 0 12px 24px -4px hsl(142 72% 10% / 0.12);
+
+    --gradient-warm: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(142 72% 20%) 100%);
+    --gradient-soil: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(142 20% 98%) 100%);
+
+    --ease-settle: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 142 20% 98%;
+    --sidebar-foreground: 142 72% 10%;
+    --sidebar-primary: 142 76% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 142 20% 94%;
+    --sidebar-accent-foreground: 142 76% 36%;
+    --sidebar-border: 142 20% 90%;
+    --sidebar-ring: 142 76% 36%;
   }
 }
-p {
-  margin: 0;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Barlow Semi Condensed', system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  h1 { letter-spacing: -0.02em; }
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+@layer components {
+  .display {
+    font-family: 'Barlow Semi Condensed', system-ui, sans-serif;
+    font-weight: 700;
+  }
+  .container-app {
+    @apply mx-auto w-full max-w-[1280px] px-4 md:px-6;
+  }
+  .surface-alt {
+    background-color: hsl(var(--surface-alt));
+  }
+  .shadow-soft-sm { box-shadow: var(--shadow-sm); }
+  .shadow-soft-md { box-shadow: var(--shadow-md); }
+  .shadow-soft-lg { box-shadow: var(--shadow-lg); }
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+@layer utilities {
+  .tap-press {
+    transition: transform 100ms var(--ease-settle);
+  }
+  .tap-press:active {
+    transform: scale(0.97);
+  }
 }
